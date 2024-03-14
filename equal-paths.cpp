@@ -8,20 +8,6 @@ using namespace std;
 
 
 // You may add any prototypes of helper functions here
-int depth(Node* root) {
-    int right = 0; 
-    int left = 0; 
-    if(root == NULL) { 
-        return 0; 
-    }
-    depth(root->left); 
-    left+=1; 
-    depth(root->right); 
-    right+=1; 
-
-
-}
-
 bool equalPaths(Node * root)
 {
     // Add your code below
