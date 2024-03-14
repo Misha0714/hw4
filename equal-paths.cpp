@@ -48,11 +48,11 @@ bool equalPaths(Node * root)
     }
 
     if(right==left && leftPath && rightPath) {
-        reutrn true; 
+        return true; 
     }
-    else [
+    else {
         return false; 
-    ]
+    }
 
 
 }
