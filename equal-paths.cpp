@@ -19,6 +19,12 @@ bool equalPaths(Node * root)
     if (root->left == NULL && root->right == NULL) {
         return true; 
     }
+    if (root->left == NULL && root->right != NULL) {
+        reutrn true; 
+    }
+    if(root->right == NULL && root->right != NULL) {
+        return true; 
+    }
     int right = 0; 
     int left = 0; 
     //call equalPaths on left side of tree 
@@ -32,7 +38,6 @@ bool equalPaths(Node * root)
     if (root->left!= nullptr) {
         left++; 
     }
-
     if(right==left && leftPath && rightPath) {
         return true; 
     }
