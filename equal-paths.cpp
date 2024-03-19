@@ -20,7 +20,7 @@ bool equalPaths(Node * root)
         return true; 
     }
     if (root->left == NULL && root->right != NULL) {
-        reutrn true; 
+        reutrn true;   
     }
     if(root->right == NULL && root->right != NULL) {
         return true; 
