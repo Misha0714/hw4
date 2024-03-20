@@ -22,7 +22,7 @@ bool equalPaths(Node * root)
     if (root->left == NULL && root->right != NULL) {
         return true;   
     }
-    if(root->right == NULL && root->right != NULL) {
+    if(root->left != NULL && root->right == NULL) {
         return true; 
     }
     int right = 0; 
