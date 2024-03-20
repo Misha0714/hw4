@@ -19,26 +19,24 @@ bool equalPaths(Node * root)
     if (root->left == NULL && root->right == NULL) {
         return true; 
     }
-    if (root->left == NULL && root->right != NULL) {
-        return true;   
-    }
-    if(root->left != NULL && root->right == NULL) {
-        return true; 
-    }
+    // Check if the root has both left and right children
+    bool hasLeft = root->left != NULL;
+    bool hasRight = root->right != NULL;
+    //count for right and left to keep track of path 
     int right = 0; 
     int left = 0; 
     //call equalPaths on left side of tree 
     bool leftPath = equalPaths(root->left);  
     //call equalPaths on left side of tree 
     bool rightPath = equalPaths(root->right); 
-
+    
     if (root->right != nullptr) {
         right++; 
     }
     if (root->left!= nullptr) {
         left++; 
     }
-    if(right==left && leftPath && rightPath) {
+    if(right==left && (leftPath && rightPath) && (hasLeft && hasRight)) {
         return true; 
     }
     else {
