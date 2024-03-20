@@ -9,9 +9,15 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     // Binary Search Tree tests
-    BinarySearchTree<char,int> bt;
-    bt.insert(std::make_pair('a',1));
-    bt.insert(std::make_pair('b',2));
+    	BinarySearchTree<int, double> bst;
+	bst.insert(std::make_pair(2, 1.0));
+	bst.insert(std::make_pair(1, 1.0));
+	bst.insert(std::make_pair(3, 1.0));
+
+	bst.remove(2);
+    // BinarySearchTree<char,int> bt;
+    // bt.insert(std::make_pair('a',1));
+    // bt.insert(std::make_pair('b',2));
     
     // cout << "Binary Search Tree contents:" << endl;
     // for(BinarySearchTree<char,int>::iterator it = bt.begin(); it != bt.end(); ++it) {
