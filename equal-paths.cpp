@@ -45,6 +45,5 @@ bool equalPaths(Node * root)
         return false; 
     }
 
-
 }
 
