@@ -19,10 +19,9 @@ bool equalPaths(Node * root)
     if (root->left == NULL && root->right == NULL) {
         return true; 
     }
-    if (root->left == NULL && root->right != NULL) {
-        return true;   
-    }
-    if(root->left != NULL && root->right == NULL) {
+
+    bool sideChildren = hasChildren(root); 
+    if (sideChildren==true) {
         return true; 
     }
     int right = 0; 
@@ -44,6 +43,17 @@ bool equalPaths(Node * root)
     else {
         return false; 
     }
+}
+//If the node just have 
+ bool hasChildren(Node* node) {
+
+    if (node->left == NULL && node->right != NULL) {
+        return true;   
+    }
+    if(node->left != NULL && node->right == NULL) {
+        return true; 
+    }
+    else { return false; }
 
 }
 
