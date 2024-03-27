@@ -44,16 +44,22 @@ bool equalPaths(Node * root)
         return false; 
     }
 }
-//If the node just have 
- bool hasChildren(Node* node) {
-
-    if (node->left == NULL && node->right != NULL) {
-        return true;   
+//helper function to find the height 
+ int height(Node* node) {
+    
+    if (node == nullptr) {
+        return 0; 
     }
-    if(node->left != NULL && node->right == NULL) {
-        return true; 
-    }
-    else { return false; }
+    else {
+        int leftH = height(node->left); 
+        int righth = height(node->right);  
+        if (leftH > rightH) {
+            return leftH + 1; 
+        else {
+            return rightH + 1; 
+        }
 
+        }
+    }
 }
 
