@@ -6,7 +6,23 @@
 #include "equal-paths.h"
 using namespace std;
 
-
+//helper function to find the height 
+ int height(Node* node) {
+    
+    if (node == nullptr) {
+        return 0; 
+    }
+    else {
+        int leftH = height(node->left); 
+        int rightH = height(node->right);  
+        if (leftH > rightH) {
+            return leftH + 1; 
+        }
+        else {
+            return rightH + 1; 
+        }  
+    }
+}
 // You may add any prototypes of helper functions here
 bool equalPaths(Node * root)
 {
@@ -20,46 +36,17 @@ bool equalPaths(Node * root)
         return true; 
     }
 
-    bool sideChildren = hasChildren(root); 
-    if (sideChildren==true) {
-        return true; 
-    }
-    int right = 0; 
-    int left = 0; 
-    //call equalPaths on left side of tree 
-    bool leftPath = equalPaths(root->left);  
-    //call equalPaths on left side of tree 
-    bool rightPath = equalPaths(root->right); 
+    int right = height(root->right); 
+    int left = height(root->left); 
+  
 
-    if (root->right != nullptr) {
-        right++; 
-    }
-    if (root->left!= nullptr) {
-        left++; 
-    }
-    if(right==left && leftPath && rightPath) {
-        return true; 
-    }
-    else {
+    if(right!=left && root->right != nullptr && root->left!= nullptr) {
         return false; 
     }
-}
-//helper function to find the height 
- int height(Node* node) {
-    
-    if (node == nullptr) {
-        return 0; 
-    }
     else {
-        int leftH = height(node->left); 
-        int righth = height(node->right);  
-        if (leftH > rightH) {
-            return leftH + 1; 
-        else {
-            return rightH + 1; 
-        }
-
-        }
+        return equalPaths(root->left) && equalPaths(root->right);  
     }
+
 }
+
 
