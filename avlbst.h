@@ -154,11 +154,7 @@ void AVLTree<Key, Value>::insert(const std::pair<const Key, Value> &new_item)
     
     //check if tree is empty 
      if(this->root_ == nullptr) {
-        //set root equal to new_item
-        //this->root_ = new AVLNode<Key,Value>(new_item.first, new_item.second, nullptr);
-        //set the balance/value equal to 0
-        //this->root_->setValue(0); 
-
+       
         //set new-item as root 
         AVLNode<Key,Value>* newNode = new AVLNode<Key,Value>(new_item.first, new_item.second, nullptr);
         this->root_ = newNode; 
@@ -201,8 +197,7 @@ void AVLTree<Key, Value>::insert(const std::pair<const Key, Value> &new_item)
     } 
     else {
         parentNode->setRight(newNode);
-        // int balance = parentNode->getBalance(); 
-        // parentNode->setBalance(balance+1); 
+        
     }
 
     if(parentNode->getBalance() == -1) {
@@ -213,7 +208,6 @@ void AVLTree<Key, Value>::insert(const std::pair<const Key, Value> &new_item)
         parentNode->setBalance(0); 
     }
     else if(parentNode->getBalance() == 0) {
-        //parentNode->setBalance(parentNode->getBalance()+1); 
         if(newNode == parentNode->getLeft()) {
             parentNode->setBalance(-1); 
         }
@@ -222,21 +216,6 @@ void AVLTree<Key, Value>::insert(const std::pair<const Key, Value> &new_item)
         }
         insertfix(newNode->getParent(), newNode);
     }
-    
-
-
-
-    // // TODO
-    // // Perform standard BST insertion
-    
-    // // Find the inserted node
-    // newNode = static_cast<AVLNode<Key, Value>*>(this->internalFind(new_item.first));
-
-    //Rebalance the tree, have insert fix here 
-    // if(parentNode->getBalance() != 0) {
-    //     insertfix(newNode->getParent(), newNode);
-    // }
-
 }
 /*
  * Recall: The writeup specifies that if a node has 2 children you
@@ -353,32 +332,13 @@ void AVLTree<Key, Value>:: remove(const Key& key)
             else if (nodeToRemove == parent->getRight()) {
                 parent->setRight(child);
             }
-            // if nodeToRemove is a right child of its parent, then parent's right child becomes "child"
-            // parent->getLeft() == nodeToRemove; 
-            // parent->setLeft(child);
+            
             child->setParent(parent);
             delete nodeToRemove;
             nodeToRemove = nullptr; 
         }
     }
-    // if(this->empty()) {
-    //     return; 
-    // }
-    // AVLNode<Key,Value>* nodeToRemove = static_cast<AVLNode<Key, Value>*>(this->internalFind(key));
-    // if (nodeToRemove == nullptr){
-    //     return;
-    // } else {
-    //     nodeToRemove = nodeToRemove->getParent();
-    // }
-    // BinarySearchTree<Key, Value>::remove(key);
-    //patch tree 
-
-
     removefix(parentNode, diff);
-    
-
-    
-
 }
 template<class Key, class Value>
 void AVLTree<Key, Value>::insertfix(AVLNode<Key, Value>* parentNode, AVLNode<Key, Value>* node) {
@@ -481,47 +441,6 @@ void AVLTree<Key, Value>::insertfix(AVLNode<Key, Value>* parentNode, AVLNode<Key
             }
         }
     }
-
-
-    //rebalance stuff 
-    // while (node != nullptr) {
-    //     // Update the balance factor of the current node
-    //     //create variables to contain height of left and right subtrees 
-    //     if(node->getLeft() != nullptr) {
-    //         leftHeight = getHeight(node->getLeft());
-    //     }
-    //     else {
-    //         leftHeight =0; 
-    //     }
-    //     if(node->getRight() != nullptr) {
-    //         rightHeight = getHeight(node->getRight());
-    //     }
-    //     else {
-    //         rightHeight =0; 
-    //     }
-    //     //Find the balance factor of the node 
-    //     node->setBalance(rightHeight - leftHeight);
-
-    //     // Check if the node is unbalanced and perform rotations if necessary
-    //     if (node->getBalance() > 1) {
-    //         if (node->getRight()->getBalance() < 0) {
-    //             // Double rotation: right-left
-    //             rotateRight(node->getRight());
-    //         }
-    //         // Single rotation: left
-    //         rotateLeft(node);
-    //     } else if (node->getBalance() < -1) {
-    //         if (node->getLeft()->getBalance() > 0) {
-    //             // Double rotation: left-right
-    //             rotateLeft(node->getLeft());
-    //         }
-    //         // Single rotation: right
-    //         rotateRight(node);
-    //     }
-
-    //     // Move up one level in the tree
-    //     node = node->getParent();
-    // }
 }
 template<class Key, class Value>
 void AVLTree<Key, Value>::removefix(AVLNode<Key, Value>* node, int diff) {
